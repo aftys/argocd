@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: react-spring-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: react-spring-app
+  template:
+    metadata:
+      labels:
+        app: react-spring-app
+    spec:
+      containers:
+      - name: client
+        image: oussamaaftys/client:1
+        ports:
+        - containerPort: 3000
+      - name: server
+        image: oussamaaftys/server:1
+        ports:
+        - containerPort: 5000
